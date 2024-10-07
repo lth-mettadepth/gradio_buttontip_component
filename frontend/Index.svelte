@@ -28,19 +28,31 @@
     click: never;
   }>;
 
-  function calculateTooltipPosition(event) {
-    const button = event.currentTarget; // Get the button that triggered the event
-    const tooltipElement = button.querySelector(".tooltip-text") as HTMLElement; // Find the tooltip within the button
+function calculateTooltipPosition(event) {
+    const button = event.currentTarget;
+    const tooltipElement = button.querySelector(".tooltip-text") as HTMLElement;
 
     if (button && tooltipElement) {
-      // If offsets are provided, use them
       if (x !== null && y !== null) {
         tooltipElement.style.left = `${x}px`;
         tooltipElement.style.top = `${y}px`;
+      } else {
+        // Center the tooltip above the button
+        const buttonRect = button.getBoundingClientRect();
+        const tooltipRect = tooltipElement.getBoundingClientRect();
+
+        // Center horizontally (already handled by CSS transform)
+        tooltipElement.style.left = '50%';
+
+        // Position above the button with some spacing
+        const spacing = 5; // Pixels above the button
+        tooltipElement.style.bottom = `${buttonRect.height + spacing}px`;
+
+        // Reset top position
+        tooltipElement.style.top = 'auto';
       }
     }
   }
-
   window.addEventListener("resize", () => {
     const tooltips = document.querySelectorAll(".tooltip-text");
     tooltips.forEach((tooltip) => {

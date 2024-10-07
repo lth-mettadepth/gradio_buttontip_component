@@ -63,6 +63,7 @@ class buttontip_component(Component):
             min_width: minimum pixel width, will wrap if not sufficient screen space to satisfy this value. If a certain scale value results in this Component being narrower than min_width, the min_width parameter will be respected first.
             x: Horizontal offset of the tooltip from the button.
             y: Vertical offset of the tooltip from the button.
+            if X and Y are not set, the tip will be center-top aligned with the button
         """
         super().__init__(
             every=every,

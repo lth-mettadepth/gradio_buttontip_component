@@ -11,21 +11,20 @@ demo = gr.Interface(
     description="This interface showcases a button with a tooltip.",
     fn=button_click,
     inputs=[
-        # Change X, Y values to position the tooltip
+        # If X and Y are not set, the tip will be center-top aligned with the button
         buttontip_component(
             tooltip="Tooltip Text",
             tooltip_color="white",  # Custom color
             tooltip_background_color="red",
-            x=50,  # No horizontal offset
-            y=-30,  # Above the button
             value="Top Button"
         ),
+        # Change X, Y values to position the tooltip
         buttontip_component(
             tooltip="Tooltip Text",
             tooltip_color="white",  # Custom color
             tooltip_background_color="green",
-            x=140,  # No horizontal offset
-            y=20,  # Below the button
+            x=50,  # No horizontal offset
+            y=-20,  # Below the button
             value="Bottom Button"
         )
     ],

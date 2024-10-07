@@ -21,7 +21,7 @@ with gr.Blocks(
 # `gradio_buttontip_component`
 
 <div style="display: flex; gap: 7px;">
-<img alt="Static Badge" src="https://img.shields.io/badge/version%20-%200.0.1%20-%20orange">  
+<a href="https://pypi.org/project/gradio_buttontip_component/" target="_blank"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/gradio_buttontip_component"></a>  
 </div>
 
 Python library for easily interacting with trained machine learning models
@@ -51,21 +51,20 @@ demo = gr.Interface(
     description="This interface showcases a button with a tooltip.",
     fn=button_click,
     inputs=[
-        # Change X, Y values to position the tooltip
+        # If X and Y are not set, the tip will be center-top aligned with the button
         buttontip_component(
             tooltip="Tooltip Text",
             tooltip_color="white",  # Custom color
             tooltip_background_color="red",
-            x=50,  # No horizontal offset
-            y=-30,  # Above the button
             value="Top Button"
         ),
+        # Change X, Y values to position the tooltip
         buttontip_component(
             tooltip="Tooltip Text",
             tooltip_color="white",  # Custom color
             tooltip_background_color="green",
-            x=140,  # No horizontal offset
-            y=20,  # Below the button
+            x=50,  # No horizontal offset
+            y=-20,  # Below the button
             value="Bottom Button"
         )
     ],
